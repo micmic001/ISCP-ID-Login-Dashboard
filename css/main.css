@@ -40,3 +40,12 @@ body{
     height: 60px; 
     margin: auto 0 auto auto;
 }
+.info-title{
+    font-size:42px; font-weight:700; color:#393939;
+}
+.info-sub-title-container{
+    width: 20%; height:80px; margin: 0 0 0 2%; color:#393939;
+}
+.info-sub-details-container{
+    width: 70%; height:80px; color:#393939;
+}

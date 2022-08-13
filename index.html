@@ -11,15 +11,62 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body class="d-flex flex-column bg-main">
     <div class="nav-pad d-flex flex-row">
-        <div class="iscp-logo" style="width: 30%; height: 64px;"></div>
+        <div id="logo" class="iscp-logo" style="width: 30%; height: 64px;"></div>
         <div class="system-title" style="">Student Login System</div>
     </div>
-    <div class="flex-row" style="width: 100%; height: 70vh;">
-        asd
+    <div class="d-flex flex-row justify-content-between flex-" style="width: 100%; height: 75vh; margin-top: 0.5%;">
+        <div id="image-container-main" style="width: 49%; height:inherit; margin-top: 1%;">
+            <div  class="d-flex flex-column" style="width: 350px; height:90%; background-color:white; border-radius: 20px; margin: auto;">
+                <div id="image-container" style="width: 330px; height:95%; background-color:white; border-radius: 20px; margin: auto; overflow: hidden; background-image: url('./img/image.gif'); background-position: center; background-size: 100%; background-repeat: no-repeat;">
+                    <img id="photo" src="" alt="" width="330" height="inherit">
+                </div>
+            </div>
+        </div>
+        <div id="details-container" style="width: 49%; height:93%; margin-top: 1.5%;">
+            <div class="d-flex flex-column justify-content-start"
+                style="width: 100%; height:inherit; background-color:white; border-start-start-radius: 20px; border-end-start-radius: 20px;">
+                <div style="width: 97%; height:80px;  margin: 3% 0 0 3%;">
+                    <div class="info-title">Basic Information</div>
+                </div>
+                <div class="d-flex flex-row" style="width: 98%; height:40px; margin: 0 0 0 2%;">
+                    <div class="d-flex info-sub-title-container">
+                        <div style="margin: auto auto auto 5%; font-size: 23px; font-weight: 700;">NAME:</div>
+                    </div>
+                    <div class="d-flex info-sub-details-container">
+                        <div style="margin: auto auto auto 0; font-size: 23px; font-weight:300;"><div id="name"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex flex-row" style="width: 98%; height:40px; margin: 2% 0 0 2%;">
+                    <div class="d-flex info-sub-title-container">
+                        <div style="margin: auto auto auto 5%; font-size: 23px; font-weight: 700;">COURSE:</div>
+                    </div>
+                    <div class="d-flex info-sub-details-container">
+                        <div style="margin: auto auto auto 0; font-size: 23px; font-weight:300; "><div id="course"></div>
+                            <i style="font-size: 15px;"><div id="major"></div></i></div>
+                    </div>
+                </div>
+                <div class="d-flex flex-row"
+                    style="width: 98%; height:40px;  margin: 2% 0 0 2%;">
+                    <div class="d-flex info-sub-title-container">
+                        <div style="margin: auto auto auto 5%; font-size: 23px; font-weight: 700;">CAMPUS:</div>
+                    </div>
+                    <div class="d-flex info-sub-details-container">
+                        <div style="margin: auto auto auto 0; font-size: 23px; font-weight:300;"><div id="campus"></div></div>
+                    </div>
+                </div>
+                <div class="d-flex flex-row"
+                    style="width: 98%; height:100px; margin: 5% 0 0 2%;">
+                    <div style="margin: auto auto auto auto; font-size: 30px; font-weight: 300; color:#393939; text-align: center;"><i id="qoute"></i></div>
+                </div>
+            </div>
+        </div>
+        <img id="logo-spin" src="./img/image.gif" alt="" style="margin: auto;" width="400">
     </div>
     <div class="footer d-flex">
         <div style="margin: auto;">
@@ -29,5 +76,50 @@
     </div>
 </body>
 <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>-->
-
+<script>
+    $(document).ready(function () {
+        var stats=0;
+        randomData();
+        $('#logo-spin').hide();
+        $('#logo').on('click', function () {
+            console.log('fuck');
+            if (stats === 0) {
+                setTimeout(() => {
+                    $('#logo-spin').fadeIn(500, 'swing');
+                }, 600)
+                $('#image-container-main').fadeOut(500, 'swing');
+                $('#details-container').fadeOut(500, 'swing');
+                stats = 1;
+            }
+            else {
+                randomData();
+                $('#logo-spin').fadeOut(500, 'swing');
+                setTimeout(() => {
+                    $('#image-container-main').fadeIn(500, 'swing');
+                    $('#details-container').fadeIn(500, 'swing');
+                }, 600)
+             stats=0;}
+            
+        });
+    });
+    
+    function randomData(){
+        let randomIndex = Math.floor(Math.random() * 4);
+        let randomIndexx = Math.floor(Math.random() * 4);
+        let randomIndexxx = Math.floor(Math.random() * 4);
+        let randomQouteIndex = Math.floor(Math.random() * 4);
+        let names = ['John Michael Librero','Ruth Anne Dungo','Carl Angelo Librero','Joyce Winchester Perje'];
+        let course = ['BS in Psychology','BA in Public Administration','BA in Automotive Engineering','BS in Information Technology'];
+        let major = ['Major in Basahin mo iniisip ko','Major in Family Planning','Major in Racism','Major in Aircon Repair'];
+        let campus = ['Biringan Campus','Atlantis Campus','Moon Campus', 'Sun Campus'];
+        let qoute = ['"Magkakaiba tayo ng differences."','"Kung may problema ka,<br> It\'s your problem."','"Kung kaya ng iba, <br> Ipagawa mo sa kanila."','"Kung hindi para sa\'yo,<br>It\'s not for you."'];
+        let photo = ['https://drive.google.com/uc?export=view&id=1XZp1zWy_g-twzq4GcakqAHYd_Z02YfvK','https://drive.google.com/uc?export=view&id=1AdDbMHwuzv6L4M1dR-EgwtifKgXQbECA','https://drive.google.com/uc?export=view&id=1dJTp352d5PRjhDj0fGkW9RK5DcrsJcS6','https://drive.google.com/uc?export=view&id=13ue8-B_7hiRv0ml9M0Bo7iVXF4nwjeYn'];
+        document.getElementById("name").innerHTML = names[randomIndex];
+        document.getElementById("course").innerHTML = course[randomIndexx];
+        document.getElementById("major").innerHTML = major[randomIndexx];
+        document.getElementById("campus").innerHTML = campus[randomIndexxx];
+        document.getElementById("qoute").innerHTML = qoute[randomQouteIndex];
+        document.getElementById("photo").src = photo[randomQouteIndex];
+    }
+</script>
 </html>
